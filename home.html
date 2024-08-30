@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+      textarea {
+        resize: none;
+      }
+      .post-img {
+        width: 100%;
+        min-height: 50vh;
+        max-height: 50vh; /* Adjust to 100vh for full screen height */
+        object-fit: contain;
+      }
+      .feed-wrapper {
+        height: 100vh;
+        overflow-y: auto;
+      }
+      .reply-btn:hover,
+      .cancel-reply-btn:hover {
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .forum-box {
+          display: none;
+        }
+      }
+ 
+      .image-container{
+        display: flex;
+        margin: 0;
+      }
+      .multiple-uploader{
+        padding: 0%;
+      }
+
+    </style>
+    <link href="/assets/vendors/Multiple-Uploader.js-main/src/css/main.css" rel="stylesheet" />
+
+    <title>Paw Zone</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- <nav class="navbar px-lg-5 py-2 bg-light border fixed-top">
+        <a class="navbar-brand" href="#">
+          <img
+            src="/assets/img/logo.png"
+            alt=""
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+          />
+          Paw Zone
+        </a>
+      </nav>
+      <div class="h-100 pt-5 mt-4 px-lg-5">
+        asdsa
+      </div> -->
+      <div class="row">
+        <div class="col-lg-3 pt-4 mh-100 border-end">
+          <div class="d-flex align-items-center">
+            <img
+              src="/assets/img/logo.png"
+              alt=""
+              width="50"
+              height="40"
+              class="d-inline-block align-text-top"
+            />
+            <h4 class="m-0">Paw Zone</h4>
+          </div>
+          <nav class="mt-4">
+            <ul class="list-unstyled">
+              <li>
+                <a class="btn d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> home </span
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a class="btn form-control d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> search </span
+                  >Search</a
+                >
+              </li>
+
+              <li>
+                <a class="btn form-control d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> forum </span
+                  >Paw-rums</a
+                >
+              </li>
+              <li>
+                <a class="btn form-control d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2">
+                    notifications </span
+                  >Notifications</a
+                >
+              </li>
+              <li>
+                <a
+                  class="btn form-control d-flex justify-content-start"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-post-modal"
+                  ><span class="material-symbols-outlined me-2">
+                    add_to_photos </span
+                  >Create</a
+                >
+              </li>
+              <li>
+                <a class="btn form-control d-flex justify-content-start">
+                  <img
+                    src="/assets/post/cast.jfif"
+                    alt=""
+                    width="25"
+                    height="25"
+                    class="d-inline-block align-text-top rounded-circle me-2"
+                  />Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  class="btn form-control d-flex justify-content-start"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sign-out-modal"
+                  ><span class="material-symbols-outlined me-2"> logout </span
+                  >Sign Out</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-9 col-sm-12 p-4 d-flex feed-wrapper">
+          <div class="col-lg-8 col-sm-8 feed-box">
+            <div class="mb-3">
+              <div class="d-flex py-2">
+                <img
+                  class="border rounded-circle"
+                  src="/assets/img/logo.png"
+                  width="25"
+                  height="25"
+                />
+                <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                <span class="ps-2">•<span class="text-muted">3h</span></span>
+               
+                  <div class="dropdown ms-auto">
+                    
+                    <span class="material-symbols-outlined " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                      more_vert
+                      </span>
+                    <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">Go to post</a></li>
+                      <li><a class="dropdown-item" href="#">Share to</a></li>
+                      <li><a class="dropdown-item" href="#">Copy link</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div
+                id="carouselExampleIndicators"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="/assets/img/logo.png"
+                      class="d-block w-100 post-img"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="/assets/post/saasas.jfif"
+                      class="d-block w-100 post-img"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="/assets/post/cast.jfif"
+                      class="d-block w-100 post-img"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div class="card-body pt-2">
+                <ul class="list-inline">
+                  <li class="list-inline-item p-0 m-0">
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined like-post-btn"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Like"
+                        data-id="1"
+                      >
+                        pets </span
+                      ><span class="badge text-secondary like-post-count"  data-id="1"
+                        >124</span
+                      >
+                    </div>
+                  </li>
+                  <li class="list-inline-item m-0">
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#post-modal"
+                      >
+                        quick_phrases </span
+                      ><span class="badge text-secondary comment-post-count"
+                        >4</span
+                      >
+                    </div>
+                  </li>
+                  <li class="list-inline-item m-0">
+                    <span
+                      class="material-symbols-outlined"
+                      type="button"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Share"
+                    >
+                      send
+                    </span>
+                  </li>
+                </ul>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex py-2">
+                <img
+                  class="border rounded-circle"
+                  src="/assets/img/logo.png"
+                  width="25"
+                  height="25"
+                />
+                <p class="ms-2 mb-0 fw-bold">politicspaw</p>
+                <span class="ps-2">•<span class="text-muted">3h</span></span>
+              </div>
+              <img
+                src="/assets/post/asa.jfif"
+                class="card-img-top post-img"
+                alt="..."
+              />
+              <div class="card-body pt-2">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined"> pets </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined">
+                      quick_phrases
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined"> send </span>
+                  </li>
+                </ul>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.This is a wider card with supporting text below as a
+                  natural lead-in to additional content. This content is a
+                  little bit longer.
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex py-2">
+                <img
+                  class="border rounded-circle"
+                  src="/assets/img/logo.png"
+                  width="25"
+                  height="25"
+                />
+                <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                <span class="ps-2">•<span class="text-muted">3h</span></span>
+              </div>
+              <img
+                src="/assets/post/cast.jfif"
+                class="card-img-top post-img"
+                alt="..."
+              />
+              <div class="card-body pt-2">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined"> pets </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined">
+                      quick_phrases
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <span class="material-symbols-outlined"> send </span>
+                  </li>
+                </ul>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-4 h-100 ps-4 forum-box">
+            <div>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapseOne"
+                      aria-expanded="true"
+                      aria-controls="panelsStayOpen-collapseOne"
+                    >
+                      <h6>Paw-rums</h6>
+                    </button>
+                  </h2>
+                  <div
+                    id="panelsStayOpen-collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne"
+                  >
+                    <div class="accordion-body">
+                      <p>
+                        Paw-Rums is a forum for pet lovers to share ideas,
+                        photos, and experiences. Whether you want to share
+                        memes, talk about daily life with your pets, or exchange
+                        tips and tricks, Paw-Rums has a place for you. Connect
+                        with other pet lovers and celebrate the joy of having
+                        pets.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body d-flex justify-content-between">
+                  <h6 class="card-title">Memes / Funny</h6>
+                  <a href="">Visit</a>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                  <h6 class="card-title">Daily Life</h6>
+                  <a href="">Visit</a>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                  <h6 class="card-title">Tips & Tricks</h6>
+                  <a href="">Visit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade modal-lg"
+      id="post-modal"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <div class="row position-relative">
+              <div class="col-sm-12 col-lg">
+                <img
+                  src="/assets/post/saasas.jfif"
+                  class="card-img-top w-100 h-100"
+                  alt="..."
+                />
+              </div>
+              <div class="col-sm-12 col-lg d-flex flex-column">
+                <div class="post-top">
+                  <div class="d-flex py-2">
+                    <img
+                      class="border rounded-circle"
+                      src="/assets/img/logo.png"
+                      width="25"
+                      height="25"
+                    />
+                    <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                  </div>
+                </div>
+                <div
+                  class="post-content flex-grow-1 overflow-auto"
+                  style="max-height: 50vh"
+                >
+                  <div class="d-flex py-2">
+                    <img
+                      class="border rounded-circle"
+                      src="/assets/img/logo.png"
+                      width="25"
+                      height="25"
+                    />
+                    <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                    <span class="ps-2"
+                      >•<span class="text-muted">3h</span></span
+                    >
+                  </div>
+                  <p class="card-text text-start">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.This is a wider card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer. This is a wider card with supporting text
+                    below as a natural lead-in to additional content. This
+                    content is a little bit longer.This is a wider card with
+                    supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer. This is a
+                    wider card with supporting text below as a natural lead-in
+                    to additional content. This content is a little bit
+                    longer.This is a wider card with supporting text below as a
+                    natural lead-in to additional content. This content is a
+                    little bit longer.
+                  </p>
+                  <div class="post-comment-list">
+                    <div
+                      class="col-12 d-flex justify-content-between align-items-center"
+                    >
+                      <h6>Comments</h6>
+                      <div class="dropdown">
+                        <button
+                          class="btn border-0 dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          Recent
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButton1"
+                        >
+                          <li><button class="btn border-0">Oldest</button></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="post-comment-user" data-id="1">
+                      <div class="d-flex py-2">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                        <span class="ps-2 text-muted"> 3h</span>
+                      </div>
+                      <div class="text-start">
+                        <p class="m-0">nice meme its make me laugh</p>
+                      </div>
+                      <div class="p-0 text-start">
+                        <span class="fw-bold reply-btn" data-id="1">Reply</span>
+                      </div>
+                    </div>
+
+                    <div class="post-comment-user" data-id="2">
+                      <div class="d-flex py-2">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                        <span class="ps-2 text-muted"> 3h</span>
+                      </div>
+                      <div class="text-start">
+                        <p class="m-0">yeahh riiighth</p>
+                      </div>
+                      <div class="p-0 text-start">
+                        <span class="fw-bold reply-btn" data-id="2">Reply</span>
+                      </div>
+                      <div class="post-comment-user-reply ps-4">
+                        <div class="d-flex py-2">
+                          <img
+                            class="border rounded-circle"
+                            src="/assets/img/logo.png"
+                            width="25"
+                            height="25"
+                          />
+                          <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                          <span class="ps-2 text-muted"> 3h</span>
+                        </div>
+                        <div class="text-start">
+                          <p>im replyingh</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="post-comment-user" data-id="3">
+                      <div class="d-flex py-2">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">jackjack_12</p>
+                        <span class="ps-2 text-muted"> 3h</span>
+                      </div>
+                      <div class="text-start">
+                        <p class="m-0">for reaaall</p>
+                      </div>
+                      <div class="p-0 text-start">
+                        <span class="fw-bold reply-btn" data-id="3">Reply</span>
+                      </div>
+                    </div>
+
+                    <div class="post-comment-user" data-id="4">
+                      <div class="d-flex py-2">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">usernomad</p>
+                        <span class="ps-2 text-muted"> 3h</span>
+                      </div>
+                      <div class="text-start">
+                        <p class="m-0">lol im crying rn</p>
+                      </div>
+                      <div class="p-0 text-start">
+                        <span class="fw-bold reply-btn" data-id="4">Reply</span>
+                      </div>
+                      <div class="post-comment-user-reply ps-4">
+                        <div class="d-flex py-2">
+                          <img
+                            class="border rounded-circle"
+                            src="/assets/post/cast.jfif"
+                            width="25"
+                            height="25"
+                          />
+                          <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                          <span class="ps-2 text-muted"> 3h</span>
+                        </div>
+                        <div class="text-start">
+                          <p>why cry xd haha</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="post-action d-flex justify-content-start pt-2">
+                  <ul class="list-inline">
+                    <li class="list-inline-item p-0 m-0">
+                      <div
+                        class="d-flex justify-content-center align-items-center"
+                      >
+                        <span
+                          class="material-symbols-outlined modal-like-post-btn"
+                          type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Like"
+                          data-postid="1"
+                        >
+                          pets </span
+                        ><span class="badge text-secondary like-post-count"  data-postid="1"
+                          >124</span
+                        >
+                      </div>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <div
+                        class="d-flex justify-content-center align-items-center"
+                      >
+                        <span class="material-symbols-outlined" type="button">
+                          quick_phrases </span
+                        ><span class="badge text-secondary comment-post-count"
+                          >4</span
+                        >
+                      </div>
+                    </li>
+                    <li class="list-inline-item m-0">
+                      <span
+                        class="material-symbols-outlined"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Share"
+                      >
+                        send
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="col-12 p-0 text-start ps-4 d-flex bg-secondary reply-action-box d-none"
+                >
+                  <p class="m-0 fw-lighter">Replying to @username</p>
+                  <span class="ps-2 fw-bold cancel-reply-btn">Cancel</span>
+                </div>
+                <div
+                  class="post-comment d-flex justify-content-center align-items-center"
+                >
+                  <span class="material-symbols-outlined"> maps_ugc </span>
+                  <input type="hidden" class="replyID-input" />
+                  <textarea
+                    class="form-control border border-0 mx-2 comment-input"
+                    placeholder="Add a comment..."
+                  ></textarea>
+                  <span class="text-secondary post-btn" type="button"
+                    >Post</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal modal-lg fade"
+      id="create-post-modal"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-0 d-flex justify-content-between">
+            <h5 class="modal-title">Create Post</h5>
+            <span type="button" class="text-primary">Share</span>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body text-center">
+              <div class="row position-relative">
+                <div class="col-sm-12 col-lg-7">
+                  <div class="col d-flex justify-content-center">
+                    <form action="" method="" enctype="multipart/form-data" id="my-form" ></form>
+
+                    <div class="multiple-uploader m-0 overflow-auto w-100 p-0" id="multiple-uploader" style="max-height: 70vh">
+                      <div class="mup-msg">
+                        <span class="mup-main-msg">click to upload images.</span>
+                        <span class="mup-msg" id="max-upload-number">Upload up to 10 images</span>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-5 d-flex flex-column">
+                  <div class="d-flex justify-content-start">
+                    <img
+                      class="border rounded-circle me-2"
+                      src="/assets/img/logo.png"
+                      width="30"
+                      height="30"
+                    />
+                    <p>username</p>
+                  </div>
+                  <div class="form-group h-100">
+                    <textarea
+                      class="form-control h-100 border border-0"
+                    placeholder="Write something..."></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade modal-sm "
+      id="sign-out-modal"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content ">
+          <div class="modal-body p-0 ">
+            <div class="row text-center ">
+              <div class="col-12 pt-4">
+                <p class="mb-0">Oh no! You're leaving already :(...</p>
+                <p class="mt-0">Are you sure?</p>
+              </div>
+              <div class="col ">
+                <button class="btn rounded-0 border border-1 w-100">Not yet</button>
+                <button class="btn rounded-0 rounded-bottom border border-1 text-danger w-100">Yes sign me out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- icons -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+      integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- tooltip -->
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+
+    <script src="/assets/js/reply-action.js"></script>
+    <script src="/assets/vendors/Multiple-Uploader.js-main/src/js/multiple-uploader.js"></script>
+    <script>
+      let multipleUploader = new MultipleUploader("#multiple-uploader").init({
+        maxUpload: 4, // maximum number of uploaded images
+        maxSize: 2, // in size in mb
+        filesInpName: "images", // input name sent to backend
+        formSelector: "#my-form", // form selector
+      });
+
+      multipleUploader.clear(); // this function clears all uploaded images
+    </script>
+  </body>
+</html>

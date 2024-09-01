@@ -22,6 +22,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+    href="/assets/vendors/sweetalert2/sweetalert2.min.css"
+    rel="stylesheet"
+  />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -43,43 +47,45 @@
       .cancel-reply-btn:hover {
         cursor: pointer;
       }
+      .user-profile {
+        text-decoration: none; 
+        color: inherit; 
+      }
 
+      .user-profile:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+      nav ul li:hover{
+       border: 1px solid black;
+       border-radius: 10px;
+      }
       @media only screen and (max-width: 600px) {
         .forum-box {
           display: none;
         }
       }
- 
-      .image-container{
+      .nav-active{
+        border: 1px solid black;
+      }
+      .image-container {
         display: flex;
         margin: 0;
       }
-      .multiple-uploader{
+      .multiple-uploader {
         padding: 0%;
       }
-
     </style>
-    <link href="/assets/vendors/Multiple-Uploader.js-main/src/css/main.css" rel="stylesheet" />
+    <link
+      href="/assets/vendors/Multiple-Uploader.js-main/src/css/main.css"
+      rel="stylesheet"
+    />
 
     <title>Paw Zone</title>
   </head>
   <body>
     <div class="container-fluid">
-      <!-- <nav class="navbar px-lg-5 py-2 bg-light border fixed-top">
-        <a class="navbar-brand" href="#">
-          <img
-            src="/assets/img/logo.png"
-            alt=""
-            width="30"
-            height="24"
-            class="d-inline-block align-text-top"
-          />
-          Paw Zone
-        </a>
-      </nav>
-      <div class="h-100 pt-5 mt-4 px-lg-5">
-        asdsa
-      </div> -->
+
       <div class="row">
         <div class="col-lg-3 pt-4 mh-100 border-end">
           <div class="d-flex align-items-center">
@@ -95,13 +101,13 @@
           <nav class="mt-4">
             <ul class="list-unstyled">
               <li>
-                <a class="btn d-flex justify-content-start"
+                <a href="home.html" class="btn d-flex justify-content-start"
                   ><span class="material-symbols-outlined me-2"> home </span
                   >Home</a
                 >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start"
+                <a href="search.html" class="btn form-control d-flex justify-content-start"
                   ><span class="material-symbols-outlined me-2"> search </span
                   >Search</a
                 >
@@ -114,7 +120,7 @@
                 >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start"
+                <a href="notification.html" class="btn form-control d-flex justify-content-start" 
                   ><span class="material-symbols-outlined me-2">
                     notifications </span
                   >Notifications</a
@@ -131,7 +137,7 @@
                 >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start">
+                <a href="profile.html" class="btn form-control d-flex justify-content-start">
                   <img
                     src="/assets/post/cast.jfif"
                     alt=""
@@ -157,26 +163,34 @@
           <div class="col-lg-8 col-sm-8 feed-box">
             <div class="mb-3">
               <div class="d-flex py-2">
-                <img
-                  class="border rounded-circle"
-                  src="/assets/img/logo.png"
-                  width="25"
-                  height="25"
-                />
-                <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                <a class="d-flex user-profile" href="profile.html">
+                  <img
+                    class="border rounded-circle"
+                    src="/assets/img/logo.png"
+                    width="25"
+                    height="25"
+                  />
+                  <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                </a>
                 <span class="ps-2">•<span class="text-muted">3h</span></span>
+
+                <div class="dropdown ms-auto">
                
-                  <div class="dropdown ms-auto">
+                  <span class="material-symbols-outlined"   type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown">
                     
-                    <span class="material-symbols-outlined " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                      more_vert
-                      </span>
-                    <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Go to post</a></li>
-                      <li><a class="dropdown-item" href="#">Share to</a></li>
-                      <li><a class="dropdown-item" href="#">Copy link</a></li>
-                    </ul>
-                  </div>
+                    more_horiz
+                    </span>
+                  <ul
+                    class="dropdown-menu p-0"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li><a class="dropdown-item" href="#">Go to post</a></li>
+                    <li><a class="dropdown-item" href="#">Share to</a></li>
+                    <li><a class="dropdown-item copy-link-btn" data-url="http://127.0.0.1:5500/post.html" type="button">Copy link</a></li>
+                  </ul>
+                </div>
               </div>
               <div
                 id="carouselExampleIndicators"
@@ -268,7 +282,9 @@
                         data-id="1"
                       >
                         pets </span
-                      ><span class="badge text-secondary like-post-count"  data-id="1"
+                      ><span
+                        class="badge text-secondary like-post-count"
+                        data-id="1"
                         >124</span
                       >
                     </div>
@@ -461,13 +477,33 @@
               <div class="col-sm-12 col-lg d-flex flex-column">
                 <div class="post-top">
                   <div class="d-flex py-2">
-                    <img
-                      class="border rounded-circle"
-                      src="/assets/img/logo.png"
-                      width="25"
-                      height="25"
-                    />
-                    <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                    <a class="d-flex user-profile" href="profile.html">
+                      <img
+                        class="border rounded-circle"
+                        src="/assets/img/logo.png"
+                        width="25"
+                        height="25"
+                      />
+                      <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                    </a>
+                    <div class="dropdown ms-auto">
+                 
+                      <span class="material-symbols-outlined"   type="button"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown">
+                        
+                        more_horiz
+                        </span>
+                      <ul
+                        class="dropdown-menu p-0"
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                      <li><a class="dropdown-item" href="#">Go to post</a></li>
+
+                        <li><a class="dropdown-item" href="#">Share to</a></li>
+                        <li><a class="dropdown-item copy-link-btn" data-url="http://127.0.0.1:5500/post.html" type="button">Copy link</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -475,16 +511,16 @@
                   style="max-height: 50vh"
                 >
                   <div class="d-flex py-2">
-                    <img
-                      class="border rounded-circle"
-                      src="/assets/img/logo.png"
-                      width="25"
-                      height="25"
-                    />
-                    <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
-                    <span class="ps-2"
-                      >•<span class="text-muted">3h</span></span
-                    >
+                  
+                    <a class="d-flex user-profile" href="profile.html">
+                      <img
+                        class="border rounded-circle"
+                        src="/assets/img/logo.png"
+                        width="25"
+                        height="25"
+                      />
+                      <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                    </a>
                   </div>
                   <p class="card-text text-start">
                     This is a wider card with supporting text below as a natural
@@ -506,7 +542,7 @@
                     <div
                       class="col-12 d-flex justify-content-between align-items-center"
                     >
-                      <h6>Comments</h6>
+                      <h6 class="fw-bold">Comments</h6>
                       <div class="dropdown">
                         <button
                           class="btn border-0 dropdown-toggle"
@@ -527,13 +563,15 @@
                     </div>
                     <div class="post-comment-user" data-id="1">
                       <div class="d-flex py-2">
-                        <img
+                        <a class="d-flex user-profile" href="profile.html">
+                          <img
                           class="border rounded-circle"
                           src="/assets/img/logo.png"
                           width="25"
                           height="25"
                         />
                         <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                        </a>
                         <span class="ps-2 text-muted"> 3h</span>
                       </div>
                       <div class="text-start">
@@ -546,13 +584,15 @@
 
                     <div class="post-comment-user" data-id="2">
                       <div class="d-flex py-2">
-                        <img
+                        <a class="d-flex user-profile" href="profile.html">
+                          <img
                           class="border rounded-circle"
                           src="/assets/img/logo.png"
                           width="25"
                           height="25"
                         />
                         <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                        </a>
                         <span class="ps-2 text-muted"> 3h</span>
                       </div>
                       <div class="text-start">
@@ -563,13 +603,15 @@
                       </div>
                       <div class="post-comment-user-reply ps-4">
                         <div class="d-flex py-2">
-                          <img
+                          <a class="d-flex user-profile" href="profile.html">
+                            <img
                             class="border rounded-circle"
                             src="/assets/img/logo.png"
                             width="25"
                             height="25"
                           />
                           <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                          </a>
                           <span class="ps-2 text-muted"> 3h</span>
                         </div>
                         <div class="text-start">
@@ -647,7 +689,9 @@
                           data-postid="1"
                         >
                           pets </span
-                        ><span class="badge text-secondary like-post-count"  data-postid="1"
+                        ><span
+                          class="badge text-secondary like-post-count"
+                          data-postid="1"
                           >124</span
                         >
                       </div>
@@ -719,13 +763,25 @@
               <div class="row position-relative">
                 <div class="col-sm-12 col-lg-7">
                   <div class="col d-flex justify-content-center">
-                    <form action="" method="" enctype="multipart/form-data" id="my-form" ></form>
+                    <form
+                      action=""
+                      method=""
+                      enctype="multipart/form-data"
+                      id="my-form"
+                    ></form>
 
-                    <div class="multiple-uploader m-0 overflow-auto w-100 p-0" id="multiple-uploader" style="max-height: 70vh">
+                    <div
+                      class="multiple-uploader m-0 w-100 p-0"
+                      id="multiple-uploader"
+                      style="min-height: 52vh"
+                    >
                       <div class="mup-msg">
-                        <span class="mup-main-msg">click to upload images.</span>
-                        <span class="mup-msg" id="max-upload-number">Upload up to 10 images</span>
-                        
+                        <span class="mup-main-msg"
+                          >click to upload images.</span
+                        >
+                        <span class="mup-msg" id="max-upload-number"
+                          >Upload up to 10 images</span
+                        >
                       </div>
                     </div>
                   </div>
@@ -743,7 +799,8 @@
                   <div class="form-group h-100">
                     <textarea
                       class="form-control h-100 border border-0"
-                    placeholder="Write something..."></textarea>
+                      placeholder="Write something..."
+                    ></textarea>
                   </div>
                 </div>
               </div>
@@ -754,28 +811,37 @@
     </div>
 
     <div
-      class="modal fade modal-sm "
+      class="modal fade modal-sm"
       id="sign-out-modal"
       aria-hidden="true"
       tabindex="-1"
     >
-      <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content ">
-          <div class="modal-body p-0 ">
-            <div class="row text-center ">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="row text-center">
               <div class="col-12 pt-4">
                 <p class="mb-0">Oh no! You're leaving already :(...</p>
                 <p class="mt-0">Are you sure?</p>
               </div>
-              <div class="col ">
-                <button class="btn rounded-0 border border-1 w-100">Not yet</button>
-                <button class="btn rounded-0 rounded-bottom border border-1 text-danger w-100">Yes sign me out</button>
+              <div class="col">
+                <button class="btn rounded-0 border border-1 w-100">
+                  Not yet
+                </button>
+                <button
+                  class="btn rounded-0 rounded-bottom border border-1 text-danger w-100"
+                >
+                  Yes sign me out
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+    <script src="/assets/js/sweet-aler.js"></script>
 
     <!-- icons -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

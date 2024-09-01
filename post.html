@@ -22,7 +22,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-
+    <link
+    href="/assets/vendors/sweetalert2/sweetalert2.min.css"
+    rel="stylesheet"
+  />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
@@ -39,15 +42,24 @@
         height: 100vh;
         overflow-y: auto;
       }
-      .reply-btn:hover,.cancel-reply-btn:hover{
+      .reply-btn:hover,
+      .cancel-reply-btn:hover {
         cursor: pointer;
       }
+      .user-profile {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .user-profile:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+
       @media only screen and (max-width: 600px) {
-       .forum-box{
-        display: none;
-       }
-
-
+        .forum-box {
+          display: none;
+        }
       }
     </style>
 
@@ -55,21 +67,7 @@
   </head>
   <body>
     <div class="container-fluid">
-      <!-- <nav class="navbar px-lg-5 py-2 bg-light border fixed-top">
-        <a class="navbar-brand" href="#">
-          <img
-            src="/assets/img/logo.png"
-            alt=""
-            width="30"
-            height="24"
-            class="d-inline-block align-text-top"
-          />
-          Paw Zone
-        </a>
-      </nav>
-      <div class="h-100 pt-5 mt-4 px-lg-5">
-        asdsa
-      </div> -->
+     
       <div class="row">
         <div class="col-lg-3 pt-4 mh-100 border-end">
           <div class="d-flex align-items-center">
@@ -81,142 +79,201 @@
               class="d-inline-block align-text-top"
             />
             <h4 class="m-0">Paw Zone</h4>
-           
           </div>
           <nav class="mt-4">
             <ul class="list-unstyled">
-           
               <li>
-                <a class="btn d-flex justify-content-start"><span class="material-symbols-outlined  me-2">
-                  home
-                  </span>Home</a>
+                <a href="home.html" class="btn d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> home </span
+                  >Home</a
+                >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start "><span class="material-symbols-outlined me-2">
-                  search
-                  </span>Search</a>
+                <a href="search.html" class="btn form-control d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> search </span
+                  >Search</a
+                >
               </li>
-             
+
               <li>
-                <a class="btn form-control d-flex justify-content-start "><span class="material-symbols-outlined  me-2">
-                  forum
-                  </span>Paw-rums</a>
-              </li>
-              <li>
-                <a class="btn form-control d-flex justify-content-start "><span class="material-symbols-outlined me-2">
-                  notifications
-                  </span>Notifications</a>
+                <a class="btn form-control d-flex justify-content-start"
+                  ><span class="material-symbols-outlined me-2"> forum </span
+                  >Paw-rums</a
+                >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start " data-bs-toggle="modal"
-                data-bs-target="#create-post-modal"><span class="material-symbols-outlined  me-2">
-                  add_to_photos
-                  </span>Create</a>
+                <a href="notification.html" class="btn form-control d-flex justify-content-start" 
+                  ><span class="material-symbols-outlined me-2">
+                    notifications </span
+                  >Notifications</a
+                >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start ">  <img
-                src="/assets/post/cast.jfif"
-                alt=""
-                width="25"
-                height="25"
-                class="d-inline-block align-text-top rounded-circle me-2"
-              />Profile</a>
+                <a
+                  class="btn form-control d-flex justify-content-start"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-post-modal"
+                  ><span class="material-symbols-outlined me-2">
+                    add_to_photos </span
+                  >Create</a
+                >
               </li>
               <li>
-                <a class="btn form-control d-flex justify-content-start" data-bs-toggle="modal"
-                data-bs-target="#sign-out-modal"><span class="material-symbols-outlined me-2">
-                  logout
-                  </span>Sign Out</a>
+                <a href="profile.html" class="btn form-control d-flex justify-content-start">
+                  <img
+                    src="/assets/post/cast.jfif"
+                    alt=""
+                    width="25"
+                    height="25"
+                    class="d-inline-block align-text-top rounded-circle me-2"
+                  />Profile</a
+                >
               </li>
-              
+              <li>
+                <a
+                  class="btn form-control d-flex justify-content-start"
+                  data-bs-toggle="modal"
+                  data-bs-target="#sign-out-modal"
+                  ><span class="material-symbols-outlined me-2"> logout </span
+                  >Sign Out</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
         <div class="col-lg-9 col-sm-12 p-4 d-flex feed-wrapper">
-            <div class="row position-relative">
-                <div class="col-sm-12 col-lg p-0 ">
-                  <img
-                    src="/assets/post/saasas.jfif"
-                    class="card-img-top w-100 h-100"
-                    alt="..."
-                  />
+          <div class="row position-relative">
+            <div class="col-sm-12 col-lg p-0">
+              <img
+                src="/assets/post/saasas.jfif"
+                class="card-img-top w-100 h-100"
+                alt="..."
+              />
+            </div>
+            <div
+              class="col-sm-12 col-lg d-flex flex-column h-100 px-0 border border-1"
+            >
+              <div class="post-top border border-1 px-4">
+                <div class="d-flex py-2">
+                  <a class="d-flex user-profile" href="profile.html">
+                    <img
+                      class="border rounded-circle"
+                      src="/assets/img/logo.png"
+                      width="25"
+                      height="25"
+                    />
+                    <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                  </a>
+                  <div class="dropdown ms-auto">
+                 
+                    <span class="material-symbols-outlined"   type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown">
+                      
+                      more_horiz
+                      </span>
+                    <ul
+                      class="dropdown-menu p-0"
+                      aria-labelledby="dropdownMenuButton1"
+                    >
+                     
+                      <li><a class="dropdown-item" href="#">Share to</a></li>
+                      <li><a class="dropdown-item copy-link-btn" data-url="http://127.0.0.1:5500/post.html" type="button">Copy link</a></li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-sm-12 col-lg d-flex flex-column h-100 px-0 border border-1">
-                  <div class="post-top  border border-1 px-4">
-                    <div class="d-flex py-2">
-                      <img
-                        class="border rounded-circle"
-                        src="/assets/img/logo.png"
-                        width="25"
-                        height="25"
-                      />
-                      <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+              </div>
+              <div
+                class="post-content flex-grow-1 overflow-auto px-4"
+                style="max-height: 70vh"
+              >
+                <div class="d-flex py-2">
+                  <a class="d-flex user-profile" href="profile.html">
+                    <img
+                      class="border rounded-circle"
+                      src="/assets/img/logo.png"
+                      width="25"
+                      height="25"
+                    />
+                    <p class="ms-2 mb-0 fw-bold">usernumod</p>
+                  </a>
+                  <span class="ps-2">•<span class="text-muted">3h</span></span>
+                  
+                </div>
+                <p class="card-text text-start">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content.
+                </p>
+                <div class="post-comment-list">
+                  <div
+                    class="col-12 d-flex justify-content-between align-items-center"
+                  >
+                    <h6>Comments</h6>
+                    <div class="dropdown">
+                      <button
+                        class="btn border-0 dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Recent
+                      </button>
+                      <ul
+                        class="dropdown-menu p-0"
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li>
+                          <button class="btn border-0 w-100 text-start">
+                            Oldest
+                          </button>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div
-                    class="post-content flex-grow-1 overflow-auto px-4"
-                    style="max-height: 70vh"
-                  >
+                  <div class="post-comment-user" data-id="1">
                     <div class="d-flex py-2">
-                      <img
-                        class="border rounded-circle"
-                        src="/assets/img/logo.png"
-                        width="25"
-                        height="25"
-                      />
-                      <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
-                      <span class="ps-2"
-                        >•<span class="text-muted">3h</span></span
-                      >
+                      <a class="d-flex user-profile" href="profile.html">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
+                      </a>
+                      <span class="ps-2 text-muted"> 3h</span>
                     </div>
-                    <p class="card-text text-start">
-                      This is a wider card with supporting text below as a natural
-                      lead-in to additional content.
-                    </p>
-                    <div class="post-comment-list">
-                      <div
-                        class="col-12 d-flex justify-content-between align-items-center"
-                      >
-                        <h6>Comments</h6>
-                        <div class="dropdown">
-                          <button
-                            class="btn border-0 dropdown-toggle"
-                            type="button"
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            Recent
-                          </button>
-                          <ul
-                            class="dropdown-menu p-0"
-                            aria-labelledby="dropdownMenuButton1"
-                          >
-                            <li><button class="btn border-0 w-100 text-start">Oldest</button></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="post-comment-user" data-id="1">
-                        <div class="d-flex py-2">
-                          <img
-                            class="border rounded-circle"
-                            src="/assets/img/logo.png"
-                            width="25"
-                            height="25"
-                          />
-                          <p class="ms-2 mb-0 fw-bold">catsofpaw</p>
-                          <span class="ps-2 text-muted"> 3h</span>
-                        </div>
-                        <div class="text-start">
-                          <p class="m-0">nice meme its make me laugh</p>
-                        </div>
-                        <div class="p-0 text-start">
-                          <span class="fw-bold reply-btn" data-id="1">Reply</span>
-                        </div>
-                      </div>
-  
-                      <div class="post-comment-user" data-id="2">
-                        <div class="d-flex py-2">
+                    <div class="text-start">
+                      <p class="m-0">nice meme its make me laugh</p>
+                    </div>
+                    <div class="p-0 text-start">
+                      <span class="fw-bold reply-btn" data-id="1">Reply</span>
+                    </div>
+                  </div>
+
+                  <div class="post-comment-user" data-id="2">
+                    <div class="d-flex py-2">
+                      <a class="d-flex user-profile" href="profile.html">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/img/logo.png"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                      </a>
+                      <span class="ps-2 text-muted"> 3h</span>
+                    </div>
+                    <div class="text-start">
+                      <p class="m-0">yeahh riiighth</p>
+                    </div>
+                    <div class="p-0 text-start">
+                      <span class="fw-bold reply-btn" data-id="2">Reply</span>
+                    </div>
+                    <div class="post-comment-user-reply ps-4">
+                      <div class="d-flex py-2">
+                        <a class="d-flex user-profile" href="profile.html">
                           <img
                             class="border rounded-circle"
                             src="/assets/img/logo.png"
@@ -224,224 +281,215 @@
                             height="25"
                           />
                           <p class="ms-2 mb-0 fw-bold">catzilla</p>
-                          <span class="ps-2 text-muted"> 3h</span>
-                        </div>
-                        <div class="text-start">
-                          <p class="m-0">yeahh riiighth</p>
-                        </div>
-                        <div class="p-0 text-start">
-                          <span class="fw-bold reply-btn" data-id="2">Reply</span>
-                        </div>
-                        <div class="post-comment-user-reply ps-4">
-                          <div class="d-flex py-2">
-                            <img
-                              class="border rounded-circle"
-                              src="/assets/img/logo.png"
-                              width="25"
-                              height="25"
-                            />
-                            <p class="ms-2 mb-0 fw-bold">catzilla</p>
-                            <span class="ps-2 text-muted"> 3h</span>
-                          </div>
-                          <div class="text-start">
-                            <p>im replyingh</p>
-                          </div>
-                        </div>
+                        </a>
+                        <span class="ps-2 text-muted"> 3h</span>
                       </div>
-  
-                      <div class="post-comment-user" data-id="3">
-                        <div class="d-flex py-2">
-                          <img
-                            class="border rounded-circle"
-                            src="/assets/img/logo.png"
-                            width="25"
-                            height="25"
-                          />
-                          <p class="ms-2 mb-0 fw-bold">jackjack_12</p>
-                          <span class="ps-2 text-muted"> 3h</span>
-                        </div>
-                        <div class="text-start">
-                          <p class="m-0">for reaaall</p>
-                        </div>
-                        <div class="p-0 text-start">
-                          <span class="fw-bold reply-btn" data-id="3">Reply</span>
-                        </div>
-                      </div>
-  
-                      <div class="post-comment-user" data-id="4">
-                        <div class="d-flex py-2">
-                          <img
-                            class="border rounded-circle"
-                            src="/assets/img/logo.png"
-                            width="25"
-                            height="25"
-                          />
-                          <p class="ms-2 mb-0 fw-bold">usernomad</p>
-                          <span class="ps-2 text-muted"> 3h</span>
-                        </div>
-                        <div class="text-start">
-                          <p class="m-0">lol im crying rn</p>
-                        </div>
-                        <div class="p-0 text-start">
-                          <span class="fw-bold reply-btn" data-id="4">Reply</span>
-                        </div>
-                        <div class="post-comment-user-reply ps-4">
-                          <div class="d-flex py-2">
-                            <img
-                              class="border rounded-circle"
-                              src="/assets/post/cast.jfif"
-                              width="25"
-                              height="25"
-                            />
-                            <p class="ms-2 mb-0 fw-bold">catzilla</p>
-                            <span class="ps-2 text-muted"> 3h</span>
-                          </div>
-                          <div class="text-start">
-                            <p>why cry xd haha</p>
-                          </div>
-                        </div>
+                      <div class="text-start">
+                        <p>im replyingh</p>
                       </div>
                     </div>
                   </div>
-                  <div class="post-action d-flex justify-content-start pt-2 px-4">
-                    <ul class="list-inline">
-                      <li class="list-inline-item p-0 m-0">
-                        <div
-                          class="d-flex justify-content-center align-items-center"
-                        >
-                          <span
-                            class="material-symbols-outlined like-post-btn"
-                            type="button"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title="Like"
-                            data-id="1"
-                          >
-                            pets </span
-                          ><span class="badge text-secondary like-post-count" data-id="1">124</span>
-                        </div>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <div
-                          class="d-flex justify-content-center align-items-center"
-                        >
-                          <span
-                            class="material-symbols-outlined"
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModalToggle"
-                          >
-                            quick_phrases </span
-                          ><span class="badge text-secondary comment-post-count">4</span>
-                        </div>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <span
-                          class="material-symbols-outlined"
-                          type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Share"
-                        >
-                          send
-                        </span>
-                      </li>
-                    </ul>
+
+                  <div class="post-comment-user" data-id="3">
+                    <div class="d-flex py-2">
+                      <img
+                        class="border rounded-circle"
+                        src="/assets/img/logo.png"
+                        width="25"
+                        height="25"
+                      />
+                      <p class="ms-2 mb-0 fw-bold">jackjack_12</p>
+                      <span class="ps-2 text-muted"> 3h</span>
+                    </div>
+                    <div class="text-start">
+                      <p class="m-0">for reaaall</p>
+                    </div>
+                    <div class="p-0 text-start">
+                      <span class="fw-bold reply-btn" data-id="3">Reply</span>
+                    </div>
                   </div>
-                  <div
-                  class="col-12 p-0 text-start ps-4 d-flex bg-secondary reply-action-box d-none"
-                >
-                  <p class="m-0 fw-lighter">Replying to @username</p>
-                  <span class="ps-2 fw-bold cancel-reply-btn">Cancel</span>
+
+                  <div class="post-comment-user" data-id="4">
+                    <div class="d-flex py-2">
+                      <img
+                        class="border rounded-circle"
+                        src="/assets/img/logo.png"
+                        width="25"
+                        height="25"
+                      />
+                      <p class="ms-2 mb-0 fw-bold">usernomad</p>
+                      <span class="ps-2 text-muted"> 3h</span>
+                    </div>
+                    <div class="text-start">
+                      <p class="m-0">lol im crying rn</p>
+                    </div>
+                    <div class="p-0 text-start">
+                      <span class="fw-bold reply-btn" data-id="4">Reply</span>
+                    </div>
+                    <div class="post-comment-user-reply ps-4">
+                      <div class="d-flex py-2">
+                        <img
+                          class="border rounded-circle"
+                          src="/assets/post/cast.jfif"
+                          width="25"
+                          height="25"
+                        />
+                        <p class="ms-2 mb-0 fw-bold">catzilla</p>
+                        <span class="ps-2 text-muted"> 3h</span>
+                      </div>
+                      <div class="text-start">
+                        <p>why cry xd haha</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                  <div
-                    class="post-comment d-flex justify-content-center align-items-center px-4"
-                  >
-                  <img
+              </div>
+              <div class="post-action d-flex justify-content-start pt-2 px-4">
+                <ul class="list-inline">
+                  <li class="list-inline-item p-0 m-0">
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined like-post-btn"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Like"
+                        data-id="1"
+                      >
+                        pets </span
+                      ><span
+                        class="badge text-secondary like-post-count"
+                        data-id="1"
+                        >124</span
+                      >
+                    </div>
+                  </li>
+                  <li class="list-inline-item m-0">
+                    <div
+                      class="d-flex justify-content-center align-items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModalToggle"
+                      >
+                        quick_phrases </span
+                      ><span class="badge text-secondary comment-post-count"
+                        >4</span
+                      >
+                    </div>
+                  </li>
+                  <li class="list-inline-item m-0">
+                    <span
+                      class="material-symbols-outlined"
+                      type="button"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Share"
+                    >
+                      send
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="col-12 p-0 text-start ps-4 d-flex bg-secondary reply-action-box d-none"
+              >
+                <p class="m-0 fw-lighter">Replying to @username</p>
+                <span class="ps-2 fw-bold cancel-reply-btn">Cancel</span>
+              </div>
+              <div
+                class="post-comment d-flex justify-content-center align-items-center px-4"
+              >
+                <img
                   class="border rounded-circle"
                   src="/assets/img/logo.png"
                   width="30"
                   height="30"
                 />
-                <input type="hidden" class="replyID-input"/>
+                <input type="hidden" class="replyID-input" />
                 <textarea
-                      class="form-control border border-0 mx-2 comment-input"
-                      placeholder="Add a comment..."
-                    ></textarea>
-                    <span class="text-secondary post-btn" type="button">Post</span>
-                  </div>
-                </div>
-              </div>
-        </div>
-      </div>
-    </div>
-
- 
-
-
-    <div
-    class="modal modal-lg fade"
-    id="create-post-modal"
-    aria-hidden="true"
-    aria-labelledby="exampleModalToggleLabel"
-    tabindex="-1"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header border-0 py-0 d-flex justify-content-between">
-          <h5 class="modal-title">Create Post</h5>
-          <button type="button" class="btn text-primary">Share</button>
-        </div>
-        <div class="modal-body">
-          <div class="modal-body text-center">
-            <div class="row position-relative">
-              <div class="col-sm-12 col-lg">
-                <img
-                  src="/assets/post/saasas.jfif"
-                  class="card-img-top w-100 h-100"
-                  alt="..."
-                />
-              </div>
-              <div class="col-sm-12 col-lg d-flex flex-column">
-                <div class="form-group h-100">
-                  <textarea class="form-control h-100"></textarea>
-                </div>
-               
+                  class="form-control border border-0 mx-2 comment-input"
+                  placeholder="Add a comment..."
+                ></textarea>
+                <span class="text-secondary post-btn" type="button">Post</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-  <div
-  class="modal fade"
-  id="sign-out-modal"
-  aria-hidden="true"
-  tabindex="-1"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header border-0 py-2">
-        <h5>Sign Out</h5>
-      </div>
-      <div class="modal-body">
-        <div class="row text-center">
-         <div class="col-12">
-          <p>Oh no! You're leaving already :(...</p>
-          <p> Are you sure?</p>
-         </div>
-         <div class="col">
-          <button class="btn btn-secondary">Not yet</button>
-          <button class="btn btn-danger">Yes sign me out</button>
-         </div>
+    <div
+      class="modal modal-lg fade"
+      id="create-post-modal"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="modal-header border-0 py-0 d-flex justify-content-between"
+          >
+            <h5 class="modal-title">Create Post</h5>
+            <button type="button" class="btn text-primary">Share</button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body text-center">
+              <div class="row position-relative">
+                <div class="col-sm-12 col-lg">
+                  <img
+                    src="/assets/post/saasas.jfif"
+                    class="card-img-top w-100 h-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-sm-12 col-lg d-flex flex-column">
+                  <div class="form-group h-100">
+                    <textarea class="form-control h-100"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <div
+      class="modal fade"
+      id="sign-out-modal"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0 py-2">
+            <h5>Sign Out</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row text-center">
+              <div class="col-12">
+                <p>Oh no! You're leaving already :(...</p>
+                <p>Are you sure?</p>
+              </div>
+              <div class="col">
+                <button class="btn btn-secondary">Not yet</button>
+                <button class="btn btn-danger">Yes sign me out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+    <script src="/assets/js/sweet-aler.js"></script>
 
     <!-- icons -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

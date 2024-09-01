@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p id="textToCopy">This is the text to be copied.</p>
+    <button id="copyButton">Copy Text</button>
+
+    <script>
+        $(document).ready(function() {
+            $('#copyButton').click(function() {
+                // Create a temporary textarea element
+                var $temp = $("<textarea>");
+                $("body").append($temp);
+                $temp.val('hello').select();
+                document.execCommand("copy");
+                $temp.remove();
+                alert("Text copied: " + $('#textToCopy').text());
+            });
+        });
+    </script>
+</body>
+</html>

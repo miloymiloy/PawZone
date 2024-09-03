@@ -9,6 +9,10 @@ $(document).ready(function () {
     $(".comment-input").focus();
   });
 
+  $('.comment-btn').on('click',function(){
+    $(".comment-input").focus();
+  })
+
   //  cancel reply button
   $(".cancel-reply-btn").click(function () {
     $(".reply-action-box").addClass("d-none");
